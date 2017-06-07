@@ -5,9 +5,21 @@
 npm install sportmonks
 ```
 
+# import
+## ES6
+```js
+import { SportmonksApi } from 'sportmonks';
+const sportmonks = new SportmonksApi(__YOUR_API_TOKEN__);
+```
+## CommonJS
+```js
+var SportmonksApi = require('sportmonks').SportmonksApi;
+var sportmonks = new SportmonksApi(__YOUR_API_TOKEN__);
+```
+
 # usage
 ```js
-var sportmonks = new Sportmonks(__YOUR_API_TOKEN__); 
+var sportmonks = new SportmonksApi(__YOUR_API_TOKEN__); 
 
 sportmonks.get(endpoint,params).then( function(resp){
   //resp.data will contain your data
