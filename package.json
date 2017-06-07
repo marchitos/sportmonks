@@ -1,6 +1,6 @@
 {
   "name": "sportmonks",
-  "version": "0.0.0-semantically-released",
+  "version": "0.0.0-development",
   "description": "Sportmonks Soccer API",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR-GIT-REPOSITORY-HERE.git"
+    "url": "https://github.com/marchitos/sportmonks.git"
   },
   "files": [
     "dist",
@@ -55,5 +55,6 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "dependencies": {}
 }
