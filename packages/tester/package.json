@@ -1,0 +1,17 @@
+{
+    "name": "sportmonks-api-tester",
+    "private": true,
+    "version": "0.0.1",
+    "description": "Sportmonks Node.js V3 API Tester",
+    "scripts": {
+        "build": "tsc"
+    },
+    "author": "Marco Amadori <amadori.marco@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "typescript": "^4.7.2"
+    },
+    "dependencies": {
+        "sportmonks": "*"
+    }
+}

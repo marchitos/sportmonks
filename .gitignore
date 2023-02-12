@@ -1,11 +1,3 @@
-node_modules
-.nyc_output
-.vscode
-.idea
-.DS_Store
-coverage
-
-#TypeScript typings/definitions
-typings
-
-dist
+node_modules/
+dist/
+packages/tester/src/sportmonks_api_key.ts

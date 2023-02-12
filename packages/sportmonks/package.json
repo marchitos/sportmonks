@@ -1,0 +1,25 @@
+{
+    "name": "sportmonks",
+    "version": "3.0.0",
+    "description": "Sportmonks Node.js V3 API ",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/marchitos/sportmonks.git"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "author": "Marco Amadori <amadori.marco@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "typescript": "^4.7.2",
+        "@types/node": "^18.11.18"
+    },
+    "dependencies": {}
+}
