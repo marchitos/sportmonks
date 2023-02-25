@@ -31,6 +31,7 @@ export const API_BASE_URL = 'api.sportmonks.com';
 
 export interface SportMonksConf {
     apiToken: string;
+    timezone?: string;
 }
 export interface IApiResponse<T> {
     ok: boolean;
@@ -60,20 +61,21 @@ export interface GET_OPTS {
     includes?: string[];
     select?: string[];
     filters?: { [filterName: string]: number[] };
+    page?: number;
 }
 export class HttpClient {
-    constructor(private baseUrl: string, private apiToken: string) {
+    lastPathCalled: string = '';
+    constructor(private baseUrl: string, private apiToken: string, private timezone: string | undefined) {
     }
 
     get(path: string, opts?: GET_OPTS): Promise<IApiResponse<any>> {
         const includes = opts && opts.includes && opts.includes.length > 0 ? `&include=${opts.includes.join(';')}` : '';
         const select = opts && opts.select && opts.select.length > 0 ? `&select=${opts.select.join(',')}` : '';
         const filters = opts && opts.filters ? `&filters=${Object.keys(opts.filters).map(filterId => `${filterId}:${opts.filters && opts.filters[filterId]}`).join(';')}` : '';
-        console.log('includes', includes);
-        console.log('select', select);
-        console.log('filters', filters);
-        const pathUrl = `${path}?api_token=${this.apiToken}${includes}${select}${filters}`;
-        console.log('PATH', pathUrl, this.baseUrl + pathUrl);
+        const page = opts && opts.page ? `&page=${opts.page}` : '';
+        const timezone = this.timezone ? `&timezone=${this.timezone}` : '';
+        const pathUrl = `${path}?api_token=${this.apiToken}${includes}${select}${filters}${page}${timezone}`;
+        this.lastPathCalled = this.baseUrl + pathUrl;
         return new Promise(resolve => {
             request({
                 hostname: this.baseUrl,

@@ -1,15 +1,17 @@
 import { HttpClient, SportMonksConf, API_BASE_URL, GET_OPTS, IApiResponse } from "./client";
 export class SportMonksFootball extends HttpClient {
     constructor(private conf: SportMonksConf) {
-        super(`${API_BASE_URL}`, conf.apiToken);
+        super(`${API_BASE_URL}`, conf.apiToken, conf.timezone);
     }
     get(path: string, opts?: GET_OPTS): Promise<IApiResponse<any>> {
         return super.get(`/v3/football${path}`, opts);
     }
     // Leagues
-    leagues(live: boolean = false, opts?: GET_OPTS) {
-        const path = live ? `/leagues/live` : `/leagues`;
-        return this.get(path, opts);
+    leagues(opts?: GET_OPTS) {
+        return this.get(`/leagues`, opts);
+    }
+    leaguesLive(opts?: GET_OPTS) {
+        return this.get(`/leagues/live`, opts);
     }
     leaguesById(id: number, opts?: GET_OPTS) {
         return this.get(`/leagues/${id}`, opts);
@@ -53,13 +55,13 @@ export class SportMonksFootball extends HttpClient {
         return this.get(`/fixtures/search/${name}`, opts);
     }
     fixturesByDate(date: string, opts?: GET_OPTS) {
-        return this.get(`/fixtures/date(${date})`, opts);
+        return this.get(`/fixtures/date/${date}`, opts);
     }
     fixturesByDateRange(dateStart: string, dateEnd: string, opts?: GET_OPTS) {
         return this.get(`/fixtures/between/${dateStart}/${dateEnd}`, opts);
     }
     fixturesByDateRangeForTeam(dateStart: string, dateEnd: string, teamId: number, opts?: GET_OPTS) {
-        return this.get(`fixtures/between/${dateStart}/${dateEnd}/${teamId}`, opts);
+        return this.get(`/fixtures/between/${dateStart}/${dateEnd}/${teamId}`, opts);
     }
     fixturesHeadToHead(firstTeamId: number, secondTeamId: number, opts?: GET_OPTS) {
         return this.get(`/fixtures/head-to-head/${firstTeamId}/${secondTeamId}`, opts);
@@ -70,7 +72,7 @@ export class SportMonksFootball extends HttpClient {
 
     // livescores
     livescores(opts?: GET_OPTS) {
-        return this.get(`livescores`, opts);
+        return this.get(`/livescores`, opts);
     }
     livescoresLatest(opts?: GET_OPTS) {
         return this.get(`/livescores/latest`, opts);
@@ -121,7 +123,7 @@ export class SportMonksFootball extends HttpClient {
         return this.get(`/schedules/teams/${id}`, opts);
     }
     schedulesBySeasonIdAndTeamId(seasonId: number, teamId: number, opts?: GET_OPTS) {
-        return this.get(`/schedules/seasons/${seasonId}/${teamId}`, opts);
+        return this.get(`/schedules/seasons/${seasonId}/teams/${teamId}`, opts);
     }
 
     // players

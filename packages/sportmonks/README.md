@@ -76,6 +76,7 @@ All the lib methods allow an options param to provide selecting, including and f
 
 ## Include entities
 
+
 ## Select fields
 You can limit the size of the response by selecting only the field you need from the resourse you are requesting.
 In the following example we will retrieve only the `name` and `leg` from the fixtures:

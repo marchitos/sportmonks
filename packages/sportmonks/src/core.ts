@@ -2,7 +2,7 @@ import { API_BASE_URL, SportMonksConf, HttpClient, IApiResponse, GET_OPTS } from
 
 export class SportMonksCore extends HttpClient {
     constructor(private conf: SportMonksConf) {
-        super(`${API_BASE_URL}`, conf.apiToken);
+        super(`${API_BASE_URL}`, conf.apiToken, conf.timezone);
     }
     get(path: string, opts?: GET_OPTS): Promise<IApiResponse<any>> {
         return super.get(`/v3/core${path}`, opts);
