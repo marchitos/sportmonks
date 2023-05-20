@@ -8,7 +8,7 @@ npm install sportmonks
 ## Import
 ```js
 import { SportMonks } from 'sportmonks';
-const sportmonks = new SportMonks({ apiKey: "__YOUR_API_TOKEN__"});
+const sportmonks = new SportMonks({ apiToken: "__YOUR_API_TOKEN__"});
 ```
 
 ## Usage
@@ -21,13 +21,13 @@ You can retrieve SportMonks data of the following type:
 const sportmonks = new SportMonks({ apiKey: "__YOUR_API_TOKEN__"});
 
 // retrieve all countries in your subscription
-await sportmonks.core.getCountries();
+await sportmonks.core.countries();
 
 // retrieve all markets in your subscription
-await sportmonks.odds.getMarkets();
+await sportmonks.odds.markets();
 
 // retrieve all the leagues in your subscription
-await sportmonks.football.getLeagues();
+await sportmonks.football.leagues();
 ```
 
 The lib comes with types so you will see all the methods available for each type while your are typing.
@@ -67,7 +67,7 @@ If the response will fail, you can see the failure data in the `error` property.
 The response is also enriched with all the metadata provided by SportMonks API.
 
 ```js
-const resp = await sportmonks.football.getLeagues();
+const resp = await sportmonks.football.leagues();
 if (resp.ok) console.log(resp.data);
 ```
 
