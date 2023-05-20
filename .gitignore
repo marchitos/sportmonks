@@ -1,3 +1,5 @@
 node_modules/
 dist/
 packages/tester/src/sportmonks_api_key.ts
+.nyc_output/
+coverage/
